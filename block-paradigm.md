@@ -11,6 +11,36 @@ else
   条件不成立时执行的处理
 end
 
+if 条件1 （then）
+  处理1
+elsif 条件2 (then)
+  处理2
+elsif 条件3 (then)
+  处理3
+else
+  处理4
+end
+
+unless 语句（条件为假时执行处理）
+unless 条件 (then)
+  处理
+end
+
+case 语句（需要比较的对象只有一个，简单便于理解）
+case 比较对象
+when 值1 （then）
+  处理 1
+when 值2 （then）
+处理 2  
+when 值3 （then）
+  处理 3
+else
+  处理4
+end
+
+
+
+
 循环：while语句，times方法     
 while 循环条件 （do）  #括号里的内容可省略
   希望循环的处理
@@ -20,6 +50,11 @@ end
   希望循环的处理
 end
 
+循环次数.times {
+  希望循环的处理
+}
+#两种times方法等价
+
 数组的循环
 数组.each do |变量|
   希望循环的处理
@@ -28,4 +63,11 @@ end
 散列的循环
 散列.each do | 键变量， 值变量 |
   希望循环的处理
+end
+
+
+
+方法的定义
+def 方法名
+  希望执行的处理
 end
