@@ -41,7 +41,7 @@ end
 
 
 
-循环：while语句，times方法     
+循环：while语句，times方法，for 语句，     
 while 循环条件 （do）  #括号里的内容可省略
   希望循环的处理
 end
@@ -57,6 +57,16 @@ end
 
 数组的循环
 数组.each do |变量|
+  希望循环的处理
+end
+
+for 语句
+for 变量 in 开始时的数值..结束时的数值 （do）
+  希望循环的处理
+end
+
+普通的for 语句
+for 变量 in 对象 （do）
   希望循环的处理
 end
 
