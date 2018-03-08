@@ -90,3 +90,13 @@ end
 def 方法名
   希望执行的处理
 end
+
+创建类
+class 类名
+  类的定义
+end
+
+创建模块
+module 模块名
+  模块定义
+end
