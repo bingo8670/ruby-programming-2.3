@@ -100,3 +100,20 @@ end
 module 模块名
   模块定义
 end
+
+异常处理的写法（begin~rescue~end）
+begin
+  可能会发生异常的处理
+rescue
+  发生异常时的处理
+end
+
+后处理
+不管是否发生异常都希望执行的处理，用 ensure来定义；
+begin
+  有可能发生异常的处理
+rescue => 变量
+  发生异常后的处理
+ensure
+  不管是否发生异常都希望执行的处理
+end
