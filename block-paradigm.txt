@@ -117,3 +117,9 @@ rescue => 变量
 ensure
   不管是否发生异常都希望执行的处理
 end
+
+chomp！ 方法删除换行符
+f.each_line do |line|
+  line.chomp!
+  处理 line
+end

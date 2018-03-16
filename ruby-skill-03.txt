@@ -98,7 +98,7 @@ ary = ary 1 - ary2   :取出 ary1 中不属于 ary2 的元素，并创建新的�
 队列（queue）：按元素被追加时的顺序来获取元素的数据结构，FIFO（First-in First-out，先进先出），类似于排队；
 栈（stack）  ：按元素被追加时的相反顺序来获取元素的数据结构，LIFO（Last-in First-out，先进后出），类似于取摞盘子；
 
-           对数组开头的元素的操作      对数组开头的元素的操作
+           对数组开头的元素的操作      对数组末尾的元素的操作
 追加元素        unshift                  push
 删除元素        shift                    pop
 引用元素        first                    last
@@ -197,3 +197,75 @@ empty？ 方法用于查看字符串长度是否为 0 ；
 字符串也有大小关系，但字符串的大小关系不是由字符串蛋长度决定的，是由字符编码但顺序决定的；
 
 string.ord 方法可获取字符的码位；
+
+
+14.6 字符串的分割（split 方法）
+split 方法 ：用字符串中的特定字符l莱分割时使用； string.split(/:/)
+
+14.7 换行符的使用方法
+                 删除最后一个字符       删除换行符
+非破坏性的            chop               chomp
+破坏性的              chop!              chomp!
+
+chomp！ 方法删除换行符
+f.each_line do |line|
+  line.chomp!
+  处理 line
+end
+
+14.7 字符串的检索与替换
+检索方法：
+index   :从右到左检查字符串是否存在参数指定的字符串，返回字符串首个字符的索引值；
+rindex  :从左到右检查字符串是否存在参数指定的字符串，返回字符串首个字符的索引值（最后一次出现的索引值）；
+include ：字符串中是否存在参数指定的字符串，返回true或false；
+
+替换方法：sub,gsub
+
+
+14.9 字符串与数组的共通方法
+14.9.1 与索引操作相关的方法
+s[n]      = str
+s[n..m]   = str
+s[n, len] = str
+
+s.slice(n)
+s.slice(n..m)
+s.slice(n, len)
+
+s.slice!(n)       # 删除字符串s 的一部分，并返回删除的部分；
+s.slice!(n..m)
+s.slice!(n, len)
+
+14.9.2 返回 Enumerator 对象的方法
+each_line ：以 行 为单位进行循环处理
+each_byte ：以字节为单位进行循环处理
+each_char ：以字符为单位进行循环处理
+
+14.9.3 与连接（concat）、反转（reverse）相关的方法
+s.concat(s2)        # 连接
+s+s2
+
+s.delete(str)       # 从字符串 s 中删除字符串str
+s.delete!(str)
+
+s.reverse           # 反转字符串 s
+s.reverse!
+
+14.10 其他方法
+s.strip             # 删除字符串 s 开头和末尾的空白字符；
+s.strip!
+
+s.upcase            # 字符串 s 内容全部大写
+s.upcase!
+
+s.downcase          # 字符串 s 内容全部小写
+s.downcase!
+
+s.swapcase          # 字符串 s 内容大小写互换
+s.swapcase!
+
+s.capitalize        # 字符串 s 仅首字母大写
+s.capitalize!
+
+s.tr("B", "b")      # 替换字符
+s.tr!
