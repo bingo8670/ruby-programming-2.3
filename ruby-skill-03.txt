@@ -269,3 +269,67 @@ s.capitalize!
 
 s.tr("B", "b")      # 替换字符
 s.tr!
+
+
+
+第十五章 散列类
+15.2 散列的创建
+15.2.1 使用{}
+{键 => 值}，键值对直接用 ，隔开；
+{键 ：值}，符号作为键时使用
+
+15.2.2 使用 Hash.new
+
+
+15.3 值的获取与设定
+h = Hash.new
+h["key"] = "value"
+p h["key"]    # => "value"
+
+h.store("key", "value")         # store 方法设定值；
+p h.fetch("key")   #=>"value"   # fetch 方法获取值；
+
+15.3.1 一次性获取索引的键、值
+获取键:      keys
+获取值 :     values
+获取键值对:   to_a
+
+15.3.2 散列的默认值（防止指定了不存在的键，程序发生错误）
+·创建散列时指定默认值    Hash.new()
+·指定生成散列默认值的块
+·用fetch 方法指定（优先级高于默认值及其块）
+
+
+15.4 查看指定对象是否为散列的键或值(返回true/false)
+h.key?(key)
+h.has_key?(key)
+h.include?(key)
+h.member?(key)
+
+h.value?(value)
+h.has_value?(value)
+
+
+15.5 查看散列的大小
+h.size     # 查看散列的大小（键的数量）
+h.length
+
+h.empty?   # 查看散列的大小是否为 0 （不存在任何键）
+
+
+15.6 删除键值
+h.delete(key)   # 删除指定的键，没有的话返回 nil
+
+h.delete_if{|key, val| ···}
+h.reject!{|key, val| ···}
+# 删除符合某种条件的键值；不符合删除条件时，delete_if 方法返回原来的散列，而reject！方法返回 nil。
+
+
+15.7 初始化散列
+h.clear   清空使用过的散列
+h = Hash.new
+
+
+15.8 合并两个散列
+Hash#merge 方法可以合并两个散列，创建一个新的散列；
+Hash#merge! 方法可以合并两个散列，更新作为接收者的散列。
