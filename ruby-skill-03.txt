@@ -429,3 +429,109 @@ gsub    # 替换所有匹配的部分；
 
 
 16.6.2 scan 方法(可匹配字符，但不同替换；对匹配部分进行处理)
+
+
+
+第十七章 IO类
+17.1 输入/输出的种类
+17.1.1 标准输入/输出
+标准输入         ：STDIN,   $stdin
+标准输出         ：STDOUT,  $stdout
+标准错误输出      ：STDERR,  $stderr
+
+在执行程序时，在命令后加上“> 文件名”，就可以将程序执行时的输出结果保存到文件中。（重定向）
+
+
+17.1.2 文件输入/输出（File 类）
+io = File.open(file[, mode[, perm]] [, opt])
+io = open(file[, mode[, perm]] [, opt])
+
+file.close     关闭已打开的文件
+file.close?    检查文件是否关闭
+
+File.read(file[, length [, offset]])    # 不创建File对象，直接读取file 里面的数据。参数 length指定读取的长度，offset 指定从前面几个字节开始读取数据。
+
+File.binread(file[, length[, offset]])  # 以二进制模式打开并读取 file。
+
+File.write(file[, date[, offset]])      # 不创建File对象，直接向 file写入 data。 省略参数 offset时，会将文件的内容全部替换为 data；指定了该参数时，则会将前面 offset个字节写入文件，后面的数据保持不变。
+
+File.binwrite(file[, data[, offset]])   # 以二进制模式打开并写入 file。
+
+
+
+17.2 基本的输入/输出操作
+17.2.1 输入操作
+io.gets(rs)              # 读取对象 iov中的一行数据
+io.each(rs)
+io.each_lines(rs)
+io.readlines(rs)
+
+io.lineno                # 记录读取的行数
+io.lineno=(number)
+
+io.each_char    # 逐个字符地读取 io中的数据并执行块；string
+io.each_byte    # 逐个字节地读取 io中的数据并启动块；ASCII
+
+io.getc         # 只读取 io的一个字符；
+
+io.ungetc(ch)   # 将参数 ch指定的字符退回到 io的输入缓冲区中
+
+io.getbyte
+
+io.ungetbyte(byte)
+
+io.read(size)   # 读取参数 size中指定的大小的数据；
+
+
+17.2.2 输出操作
+io.puts(str0, str1, ···)   # 在字符串末尾添加换行符后输出；
+
+io.putc(ch)  # 输出参数 ch指定的字符编码对应的字符，为字符串时输出首字母；
+
+io.print(str0, str1, ···)       # 输出指定的字符串
+
+io.printf(fmt, arg0, arg1, ···) # 按指定格式输出指定的字符串
+
+io.write(str)  # 返回输入字符串的字节数
+
+
+
+17.3 文件指针(file pointer)
+文件指针(file pointer)或当前文件偏移量(current file offset) 表示 IO 对象指向文件的位置；
+
+io.pos                   # 获取文件指针现在的位置
+io.pos=(position)        # 改变文件指针的位置
+
+io.seek(offset, whence)  # 移动文件指针
+
+io.rewind                # 将文件指针返回到文件到开头；
+
+io.truncate(size)        # 按参数指定大小截断文件
+
+
+
+17.4 二进制模式与文本模式
+io.binmode               # 默认是文本格式，使用 binmode 方法变更为二进制模式；
+
+
+17.5 缓冲（buffering）
+程序内部开辟出用来保存临时生成到数据副本的一定的空间，称为缓冲区（buffer）。缓冲区里累积一定量的数据后，就会进行输出处理，然后清空缓冲区。
+
+io.flush  # 立即输出缓冲区中的数据
+
+io.sync            # sync 是 synchronize 同步的意思；
+io.sync=(state)    #  = true 时，同步写入操作；
+
+
+17.6 与命令进行交互
+IO.popen(command, mode)     # 用生成的IO对象输入/输出，会关联启动的命令command的标准输入/输出。
+
+open("|command", mode)      # 将带有管道符号的命令传给open方法；
+
+
+17.7 open-uri 库
+require "open-uri"
+
+
+17.8 stringio 库
+require "stringio"
