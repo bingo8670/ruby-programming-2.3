@@ -726,3 +726,32 @@ Date.parse(str)       # 将字符串转换为日期
 20.11 Time 与 Date 的互相转换
 to_time
 to_date
+
+
+
+第廿一张 Proc 类
+21.1 Proc 类是什么
+Proc.new(...)
+proc(...)
+
+21.1.1 lambda 表达式（对参数数量要求严格一致）
+
+21.1.3 to_proc 方法
+在方法中指定块时，如果以“&对象”的形式传递参数，对象.to_proc 就会被自动调用，进而生成Proc对象。
+
+
+21.2 Proc 的特征
+像Proc 对象这样，将处理内容、变量等环境同时保存等对象，在编程语言中称为 毕包（closure）
+
+
+21.3 Proc 类的实例方法
+prc.call(args, ...)          # 执行 Proc 对象 proc
+prc[args, ...]
+prc.yield(args, ...)
+prc === arg
+
+prc.arity                 # 返回作为call 方法的参数的块变量个数
+prc.parameters            # 返回关于块变量的详细信息
+
+prc.lambda?         # 判断prc 是否通过 lambda表达式定义的方法
+prc.source_location   # 返回定义prc 的程序代码的位置，返回值为“[代码文件名， 行编号]” 形式的数组。不存在时，返回nil
