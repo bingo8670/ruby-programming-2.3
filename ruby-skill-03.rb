@@ -677,3 +677,52 @@ enc.names        # 返回包含 Encoding 对象的名称一览表的数组
 19.5 IO类与编码
 io.set_encoding(encoding)
 File.open(file, "mode:encoding")
+
+
+
+第二十章 Time 类与 Date类
+20.1 Time 类与 Date类
+Time 类表示时间（年月日时分秒/时区）
+Date 类表示年月日，以天为单位；
+
+20.2 获取时间
+Time.new           # 获取当前时间
+Time.now           # 获取当前时间
+
+t.year             # 获取当前年
+t.month            # 获取当前月
+t.day              # 获取当前日
+
+Time.mktime(year[, month[, day[, hour[, min[, sec[, usec]]]]]])        # 获取当前时间的年月日时分秒/微秒
+
+Time.at(epoch)     # 获取Unix系统的标准时间1970年1月1日凌晨0时0分0秒（UTC）之后经过的秒数所对应的Time 对象。
+
+
+20.3 计算时间（秒为单位）
+
+20.4 时间的格式
+t.strftime(format)    # 把时间转化为遵循格式的字符串
+t.to_s
+
+t.rfc2822             # 生成符合电子邮件头部信息中Date：字段格式的字符串；
+
+t.iso8601             # 生成符合ISO 8601 国际标准的时间格式的字符串；
+
+
+20.5 本地时间
+t.utc                 # 国际协调时间（UTC）
+t.localtime           # 本地时间
+
+
+20.6 从字符串中获取时间
+Time.parse(str)       # 将字符串转换为时间
+Time.strptime(str, format)
+
+
+20.10 从字符串中获取日期
+Date.parse(str)       # 将字符串转换为日期
+
+
+20.11 Time 与 Date 的互相转换
+to_time
+to_date
