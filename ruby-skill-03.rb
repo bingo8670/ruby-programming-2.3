@@ -643,3 +643,37 @@ FileUtils.compare(from, to) # 比较from/to 内容，返回 true/false
 FileUtils.install(from, to[, option]) # 把文件从 from 复制到 to。如果to 已经存在，且与from 内容相同，则不会复制。option 参数用于指定目标文化的访问权限；
 
 FileUtils.mkdir_p(path)     # 用于创建多层目录
+
+
+
+第十九章 Encoding 类
+19.1 Ruby的编码与字符串
+脚本编码：决定字面量字符串对象的编码的信息，与脚本的字符编码一致
+内部编码：从外部获取的数据在程序中如何处理的信息；
+外部编码：从程序向外部输出时与编码相关的信息；
+
+
+19.2 脚本编码与魔法注释
+脚本编码：脚本自身的编码。（script encoding）
+魔法注释：指定脚本编码的注释。（magic comment）
+
+19.3 Encoding 类
+string.encoding 方法会返回 Encoding 对象；
+Encoding.compatible?(str1, str2)   # 检查两个字符串的兼容性。
+
+Encoding.default_external    # 返回默认的外部编码
+Encoding.default_internal    # 返回默认的内部编码
+Encoding.find(name)          # 返回编码名为name对应的Encoding 对象。
+
+Encoding.list                # 返回Encoding一览表
+Encoding.name_list           # 返回编码名的字符串一览表
+
+enc.name              # 返回 Encoding 对象 enc的编码名
+enc.names        # 返回包含 Encoding 对象的名称一览表的数组
+
+
+19.4 正则表达式与编码
+
+19.5 IO类与编码
+io.set_encoding(encoding)
+File.open(file, "mode:encoding")
