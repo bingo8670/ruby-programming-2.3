@@ -1,4 +1,3 @@
-# encoding= utf-8
 def wc(file)
   nline = nword = nchar = 0
   File.open(file){|io|
@@ -12,4 +11,4 @@ def wc(file)
   puts "lines=#{nline} words=#{nword} chars=#{nchar}"
 end
 
-wc(ruby-skill-01)
+wc(__FILE__)

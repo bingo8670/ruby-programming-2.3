@@ -535,3 +535,111 @@ require "open-uri"
 
 17.8 stringio 库
 require "stringio"
+
+
+
+第十八章 File类与Dir类
+18.1 File 类（操作文件系统的方法）
+18.1.1 变更文件名
+File.rename(before, after)
+
+18.1.2 复制文件
+FileUtils.cp      # 文件复制
+FileUtils.mv      # 文件移动
+
+18.1.3 删除文件
+File.delete(file)
+File.unlink(file)
+
+
+18.2 目录的操作
+Dir.pwd           # 当前目录
+Dir.chdir(dir)    # 变更当前目录（dir 指定相对于当前目录的相对路径，也可以指定相对于根目录的绝对路径）
+
+18.2.1 读取目录内容
+Dir.open(path)
+Dir.close
+
+dir.read          # 逐个读取最先打开的目录下的内容；
+
+Dir.glob
+dir.glob("*")     # 获取当前目录中所有的文件名（非隐藏文件）
+dir.glob(".*")    # 获取当前目录中所有的隐藏文件名
+
+dir.glob("*.html", "*.htm")    # 获取当前目录中扩展名为.html或者.htm 的文件名；
+
+Dir.glob(%w(*.html, "*.htm)    # 用 %w(...)生成字符串组使程序更加易懂；
+
+Dir.glob("*/*.html", "*/*.htm")    # 获取子目录中扩展名为.html或者.htm 的文件名；
+
+Dir.glob("foo.?")    # 获取文件名为foo,扩展名只有 1 个字符的文件；
+
+Dir.glob("foo.[cho]")    # 获取文件名为foo.c、foo.h、foo.o 的文件；
+
+Dir.glob("**/*")         # 获取当前目录及其子目录中所有的文件名；
+
+Dir.glob("foo/**/*.html")   # 获取目录 foo 及其子目录中所有扩展名为 .html 的文件名。
+
+
+18.2.2 创建与产出目录
+Dir.mkdir(path)          # 创建新目录
+Dir.rmdir(path)          # 删除指定的空目录
+
+
+18.3 文件与目录的属性
+File.stat(path)          # 获取文件/目录的属性
+
+File.ctime(path)         # 等效与File::Stat#ctime，文件状态的最后更改时间
+File.mtime(path)         # 等效与File::Stat#mtime，文件的最后修改时间
+File.atime(path)         # 等效与File::Stat#atime，文件的最后访问时间
+
+File.utime(atim, mtime, path) # 改变文件属性中的atime,mtime。
+
+File.chmod(mod, path)    # 修改文件path 的访问权限permission (mode 的值为整数，表示新的访问权限值)
+
+File.chown(owner, group, path)   # 改变文件path的所有者
+
+
+18.4 文件名的操作
+File.basename(path[, suffix])   # 返回路径名path中最后一个“/”以后的部分。如果指定了扩展名suffix，返回文件名；
+
+File.dirname(path)   # 返回返回路径名path中最后一个“/”之前的部分。路径不包含“/”则返回 "."。
+
+File.extname(path)   # 返回路径名path中最basename 方法返回结果中的扩展名；没有扩展名或者隐藏文件"."，返回空字符串“”
+
+File.split(path)     # 将路径名path 分割为目录名与文件名；
+
+File.join(name[, name2, ···])  # 连接参数指定的字符串
+
+File.expand_path(path[, default_dir]) # 将绝对路径 default_dir换为相对路径；
+
+
+
+18.5 与文件操作相关的库
+18.5.1 find 库
+Find.find(dir){|path|···}    # 将目录dir下的所有文件路径逐个传递给path
+Find.prume      # 跳过当前查找目录下的所有路径
+
+
+18.5.2 tempfile 库
+Tempfile.new(basename[, tempdir])    # 创建临时文件，格式为”basename + 进程ID + 流水号“”
+
+tempfile.close(real)    # 关闭临时文件（real默认为false，为true时，马上删除临时文件）
+
+tempfile.open    # 再次打开close 方法关闭的临时文件
+tempfile.path    # 返回临时文件的路径名
+
+
+18.5.3 fileutils 库
+FileUtils.cp(from, to)      # 把文件从 from 复制到 to。
+FileUtils.cp_r(from, to)    # 把文件从 from 复制到 to。from 为目录是，进行递归复制；
+
+FileUtils.mv(from, to)      # 把文件从 from 移动到 to。
+FileUtils.rm(path)          # 删除path(发生异常中断处理)
+FileUtils.rm_f(path)        # 删除path(忽略异常继续处理)
+
+FileUtils.compare(from, to) # 比较from/to 内容，返回 true/false
+
+FileUtils.install(from, to[, option]) # 把文件从 from 复制到 to。如果to 已经存在，且与from 内容相同，则不会复制。option 参数用于指定目标文化的访问权限；
+
+FileUtils.mkdir_p(path)     # 用于创建多层目录
