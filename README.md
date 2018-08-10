@@ -1,7 +1,7 @@
-##ruby programming 基础教程
-###第五版
+## ruby programming 基础教程
+### 第五版
 
-###代码范式：
+### 代码范式：
 
 条件判断：if~then~end
 ```
